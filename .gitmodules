@@ -1,0 +1,3 @@
+[submodule "Dependencies/minigrad"]
+	path = Dependencies/minigrad
+	url = https://github.com/Mirko-A/minigrad
