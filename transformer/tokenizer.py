@@ -1,6 +1,8 @@
 class Tokenizer:
     def __init__(self, input_txt_path: str, encoding: str | None = None) -> None:
-        with open(input_txt_path, "r", encoding=encoding) as f:
+        self.input_txt_path = input_txt_path
+        self.encoding = encoding
+        with open(self.input_txt_path, "r", encoding=self.encoding) as f:
             input_txt = f.read()
             self.vocab = sorted(list(set(input_txt)))
             self.vocab_len = len(self.vocab)
@@ -15,3 +17,9 @@ class Tokenizer:
     def decode(self, text_encoded: list[int]) -> str:
         assert all(isinstance(i, int) for i in text_encoded), f"Cannot encode {type(text_encoded)}. Expected: list[int]."
         return [self.itoc[i] for i in text_encoded]
+
+    def data(self) -> str:
+        with open(self.input_txt_path, "r", encoding=self.encoding) as f:
+            data = f.read()
+        
+        return data

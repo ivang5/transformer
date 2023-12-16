@@ -12,6 +12,8 @@ def main():
     l = Linear(t.vocab_len, n_embedding, False)
     test = Matrix.one_hot(3, t.vocab_len)
     print(l(test))
+    m = Matrix.from_1d_array(t.encode(t.data()[:20]))
+    print(m)
 
 if __name__ == "__main__":
     main()
